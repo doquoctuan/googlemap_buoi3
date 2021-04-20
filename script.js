@@ -11,71 +11,68 @@ function initMap() {
         zoom: 19,
     });
     const cirleBuuDien = new google.maps.Circle({
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#FF0000",
-        fillOpacity: 0.35,
+        strokeColor: "#FFFF00",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: "#C0C0C0",
+        fillOpacity: 0.2,
         map,
         center: buuDien,
         radius,
     });
 
     const cirleQuocTuGiam = new google.maps.Circle({
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#FF0000",
-        fillOpacity: 0.35,
+        strokeColor: "#FFFF00",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: "#C0C0C0",
+        fillOpacity: 0.2,
         map,
         center: quocTuGiam,
         radius,
     });
 
-   
     buuDienLatLag = new google.maps.LatLng(buuDien.lat, buuDien.lng);
-    const radiusX2 = radius * 2;
-    var point1 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radiusX2, 120);
-    var point2 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radiusX2, 0);
-    var point3 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radiusX2, -120);
+    var point1 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radius * 2, 120);
+    var point2 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radius * 2, 0);
+    var point3 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radius * 2, -120);
 
     const buuDienNgoaiTiep = new google.maps.Polygon({
         path: [point1, point2, point3],
-        strokeColor: '#FDFDFD',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#00000',
-        fillOpacity: 0.35,
+        strokeColor: '#0000FF',
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: '#FF0000',
+        fillOpacity: 0.4,
         map
     });
 
     quocTuGiamLatLng = new google.maps.LatLng(quocTuGiam.lat, quocTuGiam.lng);
-    var point1 = google.maps.geometry.spherical.computeOffset(quocTuGiamLatLng, radiusX2, 120);
-    var point2 = google.maps.geometry.spherical.computeOffset(quocTuGiamLatLng, radiusX2, 0);
-    var point3 = google.maps.geometry.spherical.computeOffset(quocTuGiamLatLng, radiusX2, -120);
+    var point1 = google.maps.geometry.spherical.computeOffset(quocTuGiamLatLng, radius * 2, 120);
+    var point2 = google.maps.geometry.spherical.computeOffset(quocTuGiamLatLng, radius * 2, 0);
+    var point3 = google.maps.geometry.spherical.computeOffset(quocTuGiamLatLng, radius * 2, -120);
 
     const quocTuGiamNgoaiTiep = new google.maps.Polygon({
         path: [point1, point2, point3],
-        strokeColor: '#FDFDFD',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#00000',
-        fillOpacity: 0.35,
+        strokeColor: '#0000FF',
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: '#FF0000',
+        fillOpacity: 0.4,
         map
     });
 
-    
     var point1 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radius, 120);
     var point2 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radius, 0);
     var point3 = google.maps.geometry.spherical.computeOffset(buuDienLatLag, radius, -120);
 
     const buudienNoiTiep = new google.maps.Polygon({
         path: [point1, point2, point3],
-        strokeColor: 'green',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: 'green',
-        fillOpacity: 0.35,
+        strokeColor: '#00FF00',
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: '#C0C0C0',
+        fillOpacity: 0,4,
         map
     });
 
@@ -85,18 +82,18 @@ function initMap() {
 
     const quocTuGiamNoiTiep = new google.maps.Polygon({
         path: [point1, point2, point3],
-        strokeColor: 'green',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: 'green',
-        fillOpacity: 0.35,
+        strokeColor: '#00FF00',
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: '#C0C0C0',
+        fillOpacity: 0,4,
         map
     });
-    markersAndInforWindows();
+    addMarkers();
     directionsService();
 }
 
-function markersAndInforWindows() {
+function addMarkers() {
     let postMarker = new google.maps.Marker({
         position: buuDien,
         map
